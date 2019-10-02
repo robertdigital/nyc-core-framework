@@ -70,7 +70,7 @@ $primary-nav-link-active-color: $secondary;
 $nav-pills-consistent-width: true;
 
 // Use dark header settings (set the background color inside 'Reset variables for dark header' conditional below)
-$global-header-dark: false;
+$global-header-dark: true;
 
 // Reset variables for dark header
 @if $global-header-dark {
@@ -209,66 +209,50 @@ $global-header-toggle-button-color: $primary-nav-link-color;
     top: 100% !important;
   }
 
-  // When '.nav-item-search' is present within '#nav-primary'
+  // When '.search-box' is present within '#nav-primary'
 
-  .nav:not(.nav-pills) {
-    .nav-item-search {
-      border: $border-width solid $global-header-border-color;
-    }
-  }
+  // .nav:not(.nav-pills) {
+  //   .search-box {
+  //     border-color: $global-header-border-color;
+  //   }
+  // }
 
-  .nav-item-search {
-    position: relative;
+  .search-box {
 
-    form,
-    input {
-      width: 100%;
-    }
+    @if $global-header-dark {
+        border-color: rgba($light, 0.5) !important;
 
-    form {
-      display: flex;
-      height: 100%;
-      position: relative;
+      input,
+      button {
+        color: $white;
+      }
 
-      @if $global-header-dark {
+      input {
+        background-color: transparent;
+        outline: none;
 
-        input,
-        button {
-          color: white;
+        &:focus {
+          background-color: white;
+          text-decoration: none;
+          color: $body-color;
+
+          ~button {
+            color: $body-color;
+          }
         }
+      }
 
-        input {
-          background-color: rgba(black, 0.2);
-        }
-
-        ::placeholder {
-          color: $light;
-          opacity: 1;
-        }
+      ::placeholder {
+        color: $input-placeholder-color;
+        color: $white;
+        opacity: 1;
       }
     }
 
-    button {
-      position: absolute;
-      right: $nav-link-padding-x;
-      top: 50%;
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-      width: $nav-item-search-button-width;
-    }
-
-    input {
-      align-self: stretch;
-      font-size: $fs-md;
-      border: 0;
-      padding-top: $nav-link-padding-y;
-      padding-right: calc(#{$nav-item-search-button-width} + #{$nav-link-padding-x});
-      padding-bottom: $nav-link-padding-y;
-      padding-left: $nav-link-padding-x;
-    }
   }
 
   @include media-breakpoint-down(md) {
+
     .nav-item {
       border-top: 1px solid $global-header-border-color;
       width: 100%;
@@ -312,9 +296,41 @@ $global-header-toggle-button-color: $primary-nav-link-color;
     }
 
   }
+
 }
 
 /* #global-header */
+
+.search-box {
+  position: relative;
+  display: flex;
+  min-height: $input-height;
+  height: 100%;
+  width: 100%;
+
+  input {
+    width: 100%;
+  }
+
+  button {
+    position: absolute;
+    right: $input-padding-x / 2;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: $search-box-button-width;
+  }
+
+  input {
+    border: unset;
+    align-self: stretch;
+    font-size: $fs-md;
+    padding-top: $input-padding-y;
+    padding-right: calc(#{$search-box-button-width} + #{$input-padding-x});
+    padding-bottom: $input-padding-y;
+    padding-left: $input-padding-x;
+  }
+}
 
 ////////////////////////////////////////
 // C. Skip Menu

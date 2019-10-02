@@ -9397,14 +9397,14 @@ html[dir="rtl"] .custom-control {
   }
 }
 
-html[dir="rtl"] #global-header .nav-item-search button {
+html[dir="rtl"] .search-box button {
   right: unset;
-  left: 1rem;
+  left: 0.5rem;
 }
 
-html[dir="rtl"] #global-header .nav-item-search input {
+html[dir="rtl"] .search-box input {
   padding-left: calc(28px + 1rem);
-  padding-right: 1rem;
+  padding-right: 0.5rem;
 }
 
 html[dir="rtl"] [class*="border-"][class*="-right"] {
@@ -10315,7 +10315,22 @@ In this file:
 }
 
 #global-header {
-  background-color: white;
+  background-color: #0A1438;
+}
+
+#global-header #nyc-logo-placeholder {
+  fill: #fff;
+}
+
+#global-header .goog-te-gadget,
+#global-header .goog-logo-link {
+  color: #fff;
+}
+
+#global-header .goog-logo-link img {
+  margin-left: .5rem;
+  margin-right: .5rem;
+  transform: scale(1.25);
 }
 
 #global-header .btn,
@@ -10327,16 +10342,16 @@ In this file:
 }
 
 #global-header button[data-toggle="collapse"] {
-  color: #212529;
+  color: #fff;
 }
 
 #global-header .nav-link,
 #global-header .dropdown-menu a {
-  color: #212529;
+  color: #fff;
 }
 
 #global-header [class*="border-"] {
-  border-color: #dee2e6 !important;
+  border-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 #global-header button[data-toggle="collapse"][aria-expanded="true"] {
@@ -10359,11 +10374,11 @@ In this file:
 }
 
 #global-header .nav-pills {
-  border-left: 1px solid #dee2e6;
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 #global-header .nav-pills .nav-item {
-  border-right: 1px solid #dee2e6;
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 960px) {
@@ -10384,6 +10399,7 @@ In this file:
 #global-header .dropdown-menu {
   border: none;
   padding: 0.75rem 1rem;
+  background-color: #0A1438;
 }
 
 #global-header .nav:not(.nav-pills) .dropdown-menu {
@@ -10398,47 +10414,39 @@ In this file:
   top: 100% !important;
 }
 
-#global-header .nav:not(.nav-pills) .nav-item-search {
-  border: 1px solid #dee2e6;
+#global-header .search-box {
+  border-color: rgba(230, 236, 247, 0.5) !important;
 }
 
-#global-header .nav-item-search {
-  position: relative;
+#global-header .search-box input,
+#global-header .search-box button {
+  color: #fff;
 }
 
-#global-header .nav-item-search form,
-#global-header .nav-item-search input {
-  width: 100%;
+#global-header .search-box input {
+  background-color: transparent;
+  outline: none;
 }
 
-#global-header .nav-item-search form {
-  display: flex;
-  height: 100%;
-  position: relative;
+#global-header .search-box input:focus {
+  background-color: white;
+  text-decoration: none;
+  color: #212529;
 }
 
-#global-header .nav-item-search button {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 28px;
+#global-header .search-box input:focus ~ button {
+  color: #212529;
 }
 
-#global-header .nav-item-search input {
-  align-self: stretch;
-  font-size: 1rem;
-  border: 0;
-  padding-top: 0.75rem;
-  padding-right: calc(28px + 1rem);
-  padding-bottom: 0.75rem;
-  padding-left: 1rem;
+#global-header .search-box ::placeholder {
+  color: #495057;
+  color: #fff;
+  opacity: 1;
 }
 
 @media (max-width: 959.98px) {
   #global-header .nav-item {
-    border-top: 1px solid #dee2e6;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
     width: 100%;
   }
   #global-header .nav-item.nav-link {
@@ -10472,6 +10480,37 @@ In this file:
 }
 
 /* #global-header */
+.search-box {
+  position: relative;
+  display: flex;
+  min-height: calc(1.5em + 1rem + 2px);
+  height: 100%;
+  width: 100%;
+}
+
+.search-box input {
+  width: 100%;
+}
+
+.search-box button {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 28px;
+}
+
+.search-box input {
+  border: unset;
+  align-self: stretch;
+  font-size: 1rem;
+  padding-top: 0.5rem;
+  padding-right: calc(28px + 1rem);
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+}
+
 .skip-menu {
   top: 1rem;
   left: 1rem;

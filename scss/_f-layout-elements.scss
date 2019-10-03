@@ -70,7 +70,7 @@ $primary-nav-link-active-color: $secondary;
 $nav-pills-consistent-width: true;
 
 // Use dark header settings (set the background color inside 'Reset variables for dark header' conditional below)
-$global-header-dark: true;
+$global-header-dark: false;
 
 // Reset variables for dark header
 @if $global-header-dark {
@@ -128,16 +128,6 @@ $global-header-toggle-button-color: $primary-nav-link-color;
     border-color: $global-header-border-color !important;
   }
   
-  // Add opacity to toggle buttons on 'expanded'
-
-  button[data-toggle="collapse"] {
-    &[aria-expanded="true"] {
-      @extend .opacity-50;
-
-      @include transition;
-    }
-  }
-
   // Set primary nav color and active states (both '.nav-pills' and '.nav-right')
 
   .nav-link {

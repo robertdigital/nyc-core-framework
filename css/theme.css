@@ -10174,7 +10174,7 @@ In this file:
   opacity: 0.40;
 }
 
-.opacity-50, #global-header button[data-toggle="collapse"][aria-expanded="true"] {
+.opacity-50 {
   opacity: 0.50;
 }
 
@@ -10315,22 +10315,7 @@ In this file:
 }
 
 #global-header {
-  background-color: #0A1438;
-}
-
-#global-header #nyc-logo-placeholder {
-  fill: #fff;
-}
-
-#global-header .goog-te-gadget,
-#global-header .goog-logo-link {
-  color: #fff;
-}
-
-#global-header .goog-logo-link img {
-  margin-left: .5rem;
-  margin-right: .5rem;
-  transform: scale(1.25);
+  background-color: white;
 }
 
 #global-header .btn,
@@ -10342,26 +10327,16 @@ In this file:
 }
 
 #global-header button[data-toggle="collapse"] {
-  color: #fff;
+  color: #212529;
 }
 
 #global-header .nav-link,
 #global-header .dropdown-menu a {
-  color: #fff;
+  color: #212529;
 }
 
 #global-header [class*="border-"] {
-  border-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-#global-header button[data-toggle="collapse"][aria-expanded="true"] {
-  transition: all 0.2s ease-in-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #global-header button[data-toggle="collapse"][aria-expanded="true"] {
-    transition: none;
-  }
+  border-color: #dee2e6 !important;
 }
 
 #global-header .nav-link {
@@ -10374,11 +10349,11 @@ In this file:
 }
 
 #global-header .nav-pills {
-  border-left: 1px solid rgba(0, 0, 0, 0.5);
+  border-left: 1px solid #dee2e6;
 }
 
 #global-header .nav-pills .nav-item {
-  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  border-right: 1px solid #dee2e6;
 }
 
 @media (min-width: 960px) {
@@ -10399,7 +10374,6 @@ In this file:
 #global-header .dropdown-menu {
   border: none;
   padding: 0.75rem 1rem;
-  background-color: #0A1438;
 }
 
 #global-header .nav:not(.nav-pills) .dropdown-menu {
@@ -10414,39 +10388,9 @@ In this file:
   top: 100% !important;
 }
 
-#global-header .search-box {
-  border-color: rgba(230, 236, 247, 0.5) !important;
-}
-
-#global-header .search-box input,
-#global-header .search-box button {
-  color: #fff;
-}
-
-#global-header .search-box input {
-  background-color: transparent;
-  outline: none;
-}
-
-#global-header .search-box input:focus {
-  background-color: white;
-  text-decoration: none;
-  color: #212529;
-}
-
-#global-header .search-box input:focus ~ button {
-  color: #212529;
-}
-
-#global-header .search-box ::placeholder {
-  color: #495057;
-  color: #fff;
-  opacity: 1;
-}
-
 @media (max-width: 959.98px) {
   #global-header .nav-item {
-    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    border-top: 1px solid #dee2e6;
     width: 100%;
   }
   #global-header .nav-item.nav-link {

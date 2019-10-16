@@ -648,7 +648,7 @@ $banner-with-background-opacity: 0.25;
 // Note: Link lists can be used in place of Bootstrap's .nav when Link padding is unneeded.
 // Link lists are ideal for horizontal navs when supporting 'rtl'
 
-$extensible-list-margin: 0.75em;
+$extensible-list-margin: 0.5rem;
 
 @mixin extensible-list-stack {
   margin-bottom: $extensible-list-margin;

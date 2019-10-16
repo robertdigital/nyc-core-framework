@@ -24,26 +24,26 @@ In this file:
 
 // Evenly space out the language list across devices
 
-[id="languages"]{
+// [id="languages"]{
 
-  ul{
+//   ul{
 
-    @extend .extensible-list;
-    @extend .row;
+//     @extend .extensible-list;
+//     @extend .row;
     
-    li{
+//     li{
 
-      @extend .col-6;
-      @extend .col-md-4;
+//       @extend .col-6;
+//       @extend .col-md-4;
 
-      @include media-breakpoint-up(lg) {
-        flex-basis: 20%;
-      }
+//       @include media-breakpoint-up(lg) {
+//         flex-basis: 20%;
+//       }
     
-    }
-  }
+//     }
+//   }
 
-}
+// }
 
 ////////////////////////////////////////
 // B. Local header and primary nav

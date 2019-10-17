@@ -70,9 +70,9 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-        $('body, html').animate({
+        $('body, html').animate( {
             scrollTop: 0
-        }, scroll_speed);
+        }, scroll_speed );
     });
 
 });

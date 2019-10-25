@@ -185,7 +185,8 @@ $global-header-toggle-button-color: $primary-nav-link-color;
   .search-box {
 
     @if $global-header-dark {
-        border-color: rgba($light, 0.5) !important;
+      
+      border-color: rgba($light, 0.5) !important;
 
       input,
       button {
@@ -270,41 +271,10 @@ $global-header-toggle-button-color: $primary-nav-link-color;
 
 .search-box {
   position: relative;
-  display: flex;
   height: 100%;
   width: 100%;
   min-height: $input-height;
-
-  input {
-    @extend .rounded;
-    width: 100%;
-  }
-
-  button {
-    position: absolute;
-    right: $input-padding-x / 2;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    width: $search-box-button-width;
-  }
-
-  input {
-    border: unset;
-    align-self: stretch;
-    font-size: $fs-md;
-    padding-top: $input-padding-y;
-    padding-right: calc(#{$search-box-button-width} + #{$input-padding-x});
-    padding-bottom: $input-padding-y;
-    padding-left: $input-padding-x;
-  }
-}
-.search-box {
-  position: relative;
   display: flex;
-  min-height: $input-height;
-  height: 100%;
-  width: 100%;
 
   input {
     width: 100%;

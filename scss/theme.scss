@@ -13,15 +13,15 @@ In this file:
 
 // Import custom SCSS
 
-@import "_header.scss";
-@import "a-global-variables.scss";
-@import "b-bootstrap-imports.scss";
-@import "c-custom-mixins.scss";
-@import "d-enhancements.scss";
-@import "e-supplementary-classes.scss";
-@import "f-layout-elements.scss";
-@import "g-dev-tools.scss";
-@import "h-nyc-subway-icons.scss";
+@import "_header";
+@import "a-global-variables";
+@import "b-bootstrap-imports";
+@import "c-custom-mixins";
+@import "d-enhancements";
+@import "e-supplementary-classes";
+@import "f-layout-elements";
+@import "g-dev-tools";
+@import "h-nyc-subway-icons";
 
 ////////////////////////////////////////
 // B. Theme styles

@@ -21,8 +21,7 @@ In this file:
 // A. Header and Footer
 ////////////////////////////////////////
 
-// '.nyc-quick-links' appear at the top right of every page
-// These links set a consistent height to '#nyc-head' (top bar)
+// Set min-height to '.row' withing '.#nyc-head' for consistency
 
 #nyc-head{
   [class^="row"]{

@@ -2,8 +2,8 @@
 
 In this file:
 
-// A. Citywide header and footer
-// B. Local header and primary nav
+// A. Header and Footer
+// B. Search Box
 // C. Skip Menu
 // D. Forms
 // E. Gradients
@@ -12,41 +12,13 @@ In this file:
 // H. Extensible lists
 // I. Matrix rows
 // J. Accordion and button toggle
-// K. Tabs
-// L. Cards
-// M. Tables
+// K. Cards
+// L. Tables
 
 */
 
 ////////////////////////////////////////
-// A. Citywide header and footer
-////////////////////////////////////////
-
-// Evenly space out the language list across devices
-
-// [id="languages"]{
-
-//   ul{
-
-//     @extend .extensible-list;
-//     @extend .row;
-    
-//     li{
-
-//       @extend .col-6;
-//       @extend .col-md-4;
-
-//       @include media-breakpoint-up(lg) {
-//         flex-basis: 20%;
-//       }
-    
-//     }
-//   }
-
-// }
-
-////////////////////////////////////////
-// B. Local header and primary nav
+// A. Header and Footer
 ////////////////////////////////////////
 
 // Primary Navigation variables set here override Bootstrap default component settings
@@ -201,12 +173,6 @@ $global-header-toggle-button-color: $primary-nav-link-color;
 
   // When '.search-box' is present within '#nav-primary'
 
-  // .nav:not(.nav-pills) {
-  //   .search-box {
-  //     border-color: $global-header-border-color;
-  //   }
-  // }
-
   .search-box {
 
     @if $global-header-dark {
@@ -289,8 +255,41 @@ $global-header-toggle-button-color: $primary-nav-link-color;
 
 }
 
-/* #global-header */
+////////////////////////////////////////
+// B. Search Box
+////////////////////////////////////////
 
+.search-box {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  min-height: $input-height;
+
+  input {
+    @extend .rounded;
+    width: 100%;
+  }
+
+  button {
+    position: absolute;
+    right: $input-padding-x / 2;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: $search-box-button-width;
+  }
+
+  input {
+    border: unset;
+    align-self: stretch;
+    font-size: $fs-md;
+    padding-top: $input-padding-y;
+    padding-right: calc(#{$search-box-button-width} + #{$input-padding-x});
+    padding-bottom: $input-padding-y;
+    padding-left: $input-padding-x;
+  }
+}
 .search-box {
   position: relative;
   display: flex;
@@ -329,12 +328,11 @@ $global-header-toggle-button-color: $primary-nav-link-color;
 // Visible only on keyboard tabbing
 
 .skip-menu {
-  @extend .position-absolute;
-  @extend .shadow;
-
+  position: absolute !important;
   top: $spacer;
   left: $spacer;
   z-index: 900;
+  box-shadow: $box-shadow;
   padding: $spacer-2;
   font-size: $fs-md;
   background: $light;
@@ -348,6 +346,18 @@ $global-header-toggle-button-color: $primary-nav-link-color;
 ////////////////////////////////////////
 // D. Forms
 ////////////////////////////////////////
+
+// The required field annotation appears at the top of forms
+
+.required-fields-annotation {
+  display: block;
+  font-size: $fs-sm;
+  text-align: right;
+  color: $danger;
+  padding-top: $spacer-1;
+  padding-bottom: $spacer-1;
+  border-top: $border-width solid $border-color;
+}
 
 // Make alerts focusable for accessibility
 
@@ -377,7 +387,14 @@ $global-header-toggle-button-color: $primary-nav-link-color;
 // Apply custom valdation for accessibility
 // The following works only when custom './js/validation.js' is present in the footer of the form's page
 
-.form-group {
+.form-row>.col {
+  &.validate-parent {
+    margin-top: auto;
+  }
+}
+
+.validate-parent {
+
   .invalid-feedback {
     display: none;
     margin-bottom: 0.5rem;
@@ -889,117 +906,7 @@ $accordion-margin-y: $spacer-1;
 }
 
 ////////////////////////////////////////
-// K. Tabs
-////////////////////////////////////////
-
-// Tab link color (for both .nav-tabs and .nav-pills)
-
-$tab-link-color: $link-color;
-$tab-link-color: $body-color;
-
-// Tab link active styles (for .nav-tabs only)
-
-$nav-tab-active-color: $info;
-$nav-tab-active-font-weight: $font-weight-bold;
-
-@mixin device-nav-pills-and-tabs-settings {
-  flex-direction: column;
-  border-color: transparent;
-  margin-bottom: $spacer-2;
-
-  .nav-item {
-    text-align: center;
-    border-color: $border-color;
-  }
-
-  @if $enable-rounded {
-    border-radius: $border-radius;
-
-    .nav-item {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-
-      &:first-child {
-        border-top-left-radius: $border-radius;
-        border-top-right-radius: $border-radius;
-      }
-
-      &:last-child {
-        border-bottom-left-radius: $border-radius;
-        border-bottom-right-radius: $border-radius;
-      }
-    }
-
-    &+.tab-content {
-      border-radius: $border-radius;
-    }
-  }
-}
-
-.nav-pills,
-.nav-tabs {
-  .nav-link {
-    color: $tab-link-color;
-
-    &.active {
-      text-decoration: underline;
-    }
-  }
-
-  .nav-item {
-    text-align: center;
-  }
-
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    @if $next {
-      &.device-#{$next} {
-        @include media-breakpoint-down($breakpoint) {
-          @include device-nav-pills-and-tabs-settings;
-        }
-      }
-    }
-  }
-}
-
-// Nav tabs 'active' state
-
-.nav-tabs .nav-item {
-  &.active {
-    font-weight: $nav-tab-active-font-weight;
-    color: $nav-tab-active-color;
-  }
-}
-
-// end each
-
-// Adjustments for border-radius
-
-@if $enable-rounded {
-
-  .nav-pills,
-  .nav-pills .nav-link {
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
-  }
-
-  .nav-pills .nav-link {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .tab-content {
-    border-bottom-left-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-  }
-}
-
-////////////////////////////////////////
-// L. Cards
+// K. Cards
 ////////////////////////////////////////
 
 $default-card-borders: false;
@@ -1023,7 +930,7 @@ $default-card-backgrounds: false;
 }
 
 ////////////////////////////////////////
-// N. Tables
+// L. Tables
 ////////////////////////////////////////
 
 $table-header-color: $info;

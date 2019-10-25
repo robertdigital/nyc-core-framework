@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     (function () {
+        
         'use strict';
+
         window.addEventListener('load', function () {
 
             var forms = document.getElementsByClassName('needs-validation');
@@ -16,7 +18,7 @@ $(document).ready(function () {
                         event.stopPropagation();
                         
                         var invalid_target = $(':invalid');
-                        invalid_target.closest('.form-group').addClass('is-invalid');
+                        invalid_target.closest('.validate-parent').addClass('is-invalid');
                         
                         var alert_target = $('.is-invalid:first');
                         alert_target.removeClass('d-none');
@@ -37,21 +39,39 @@ $(document).ready(function () {
                 }, false);
             });
         }, false);
+
     })();
     
+    
+    var requiredCheckboxes = $('.checkbox-group :checkbox[required]');
+    
+    // Required checkbox group
+
+    requiredCheckboxes.change(function () {
+
+        if (requiredCheckboxes.is(':checked')) {
+            requiredCheckboxes.removeAttr('required');
+            $(this).closest('.validate-parent').removeClass('is-invalid');
+        } else if ($(this).closest('.needs-validation').hasClass('was-validated')) {
+            requiredCheckboxes.attr('required', 'required');
+            $(this).closest('.validate-parent').addClass('is-invalid');
+        }
+
+    });
+
     $('.form-control').blur(function () {
-        if ( !$(this).is(":invalid") ) {
-            $(this).closest('.form-group').removeClass('is-invalid');
-        } else if ( $(this).closest('form').hasClass('was-validated') && $(this).is(":invalid") ){
-            $(this).closest('.form-group').addClass('is-invalid');
+        if (!$(this).is(":invalid")) {
+            $(this).closest('.validate-parent').removeClass('is-invalid');
+        } else if ($(this).closest('.needs-validation').hasClass('was-validated') && $(this).is(":invalid")) {
+            $(this).closest('.validate-parent').addClass('is-invalid');
         }
     });
-    
+
     $('.custom-control-input').change(function () {
         if (!$(this).is(":invalid")) {
-            $(this).closest('.form-group').removeClass('is-invalid');
-        } else if ( $(this).closest('form').hasClass('was-validated') && $(this).is(":invalid") ){
-            $(this).closest('.form-group').addClass('is-invalid');
+            $(this).closest('.validate-parent').removeClass('is-invalid');
+        } else if ($(this).closest('.needs-validation').hasClass('was-validated') && $(this).is(":invalid")) {
+            $(this).closest('.validate-parent').addClass('is-invalid');
         }
     });
 

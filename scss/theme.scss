@@ -29,47 +29,6 @@ In this file:
 
 // Put anything you want here
 
-// Tearsheet
-
-#tearsheet-tabs {
-
-    #sidebar {
-        .list-group-item:first-child {
-            border-top-color: transparent;
-        }
-
-        a {
-            &.active {
-                font-weight: bold;
-            }
-        }
-    }
-
-    .tab-pane {
-        overflow: hidden;
-    }
-
-    .tab-pane > section {
-        margin-top: $spacer-5;
-        margin-bottom: $spacer-5;
-        padding-left: $spacer-2;
-        padding-right: $spacer-2;
-    }
-
-    @include media-breakpoint-up(lg) {
-
-        #sidebar {
-            max-width: 300px;
-        }
-
-        .tab-pane > section {
-            padding-left: $spacer-4;
-            padding-right: $spacer-4;
-        }
-
-    }
-}
-
 // Custom active state for sidebar nav
 // (Found in article-two-column.html)
 

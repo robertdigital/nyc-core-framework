@@ -561,10 +561,9 @@ legend,
 
 .featured-panel {
 
-  >.card,
+  > .card,
   .card-img {
-    border: none;
-    border-radius: 0;
+    border: unset;
   }
 
   .card-img-overlay {

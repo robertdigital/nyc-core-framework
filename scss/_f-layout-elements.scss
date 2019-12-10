@@ -534,32 +534,25 @@ legend,
 
 @mixin featured-panel-responsive-settings {
   
-  .card-img-overlay {
-    position: relative;
-  }
 
-  img.full-opacity-on-device {
-    opacity: 1;
-  }
+  // img.full-opacity-on-device {
+  //   opacity: 1;
+  // }
 
-  [class*="overlay-gradient"]::before {
-    display: none;
-  }
+  // [class*="border"] {
+  //   border: none !important;
+  // }
 
-  [class*="border"] {
-    border: none !important;
-  }
+  // [class*="shadow"] {
+  //   box-shadow: none !important;
+  // }
 
-  [class*="shadow"] {
-    box-shadow: none !important;
-  }
-
-  [class*="text-shadow"] {
-    text-shadow: none;
-  }
+  // [class*="text-shadow"] {
+  //   text-shadow: none;
+  // }
 }
 
-.featured-panel {
+[class*="featured-panel"] {
 
   > .card,
   .card-img {
@@ -567,22 +560,46 @@ legend,
   }
 
   .card-img-overlay {
-    padding: 0;
+    padding: unset;
+    position: relative;
   }
 
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  [class*="overlay-gradient"]::before {
+    display: none;
+  }
+}
 
-    @if $next {
-      &.device-#{$next} {
-        @include media-breakpoint-down($breakpoint) {
-          @include featured-panel-responsive-settings;
+.featured-panel{
+    @each $breakpoint in map-keys($grid-breakpoints) {
+      @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+        &-#{$infix} {
+          .card-img-overlay {
+            position: absolute;
+          }
         }
       }
     }
-  }
 }
+
+
+
+
+
+//   @each $breakpoint in map-keys($grid-breakpoints) {
+//     $next: breakpoint-next($breakpoint, $grid-breakpoints);
+//     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+//     @if $next {
+//       &.device-#{$next} {
+//         @include media-breakpoint-up($breakpoint) {
+//           @include featured-panel-responsive-settings;
+//         }
+//       }
+//     }
+//   }
+// }
 
 ////////////////////////////////////////
 // G. Banner with background
@@ -885,7 +902,7 @@ $accordion-margin-y: $spacer-1;
 // K. Cards
 ////////////////////////////////////////
 
-$default-card-borders: false;
+$default-card-borders: true;
 $default-card-backgrounds: false;
 
 @if $default-card-borders == false {

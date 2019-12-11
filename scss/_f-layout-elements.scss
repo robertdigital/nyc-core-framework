@@ -532,141 +532,61 @@ legend,
 // F. Featured panels
 ////////////////////////////////////////
 
-@mixin featured-panel-responsive-settings {
-  
-
-  // img.full-opacity-on-device {
-  //   opacity: 1;
-  // }
-
-  // [class*="border"] {
-  //   border: none !important;
-  // }
-
-  // [class*="shadow"] {
-  //   box-shadow: none !important;
-  // }
-
-  // [class*="text-shadow"] {
-  //   text-shadow: none;
-  // }
-}
-
 [class*="featured-panel"] {
-
-  > .card,
-  .card-img {
-    border: unset;
-  }
+  border: unset;
 
   .card-img-overlay {
-    padding: unset;
-    position: relative;
+      display: flex;
+      padding: unset;
+  }
+  
+  &:not([class*="--fixed"]){
+    .card-img-overlay {
+      position: relative;
+    }
   }
 
   [class*="overlay-gradient"]::before {
     display: none;
   }
+
 }
 
 .featured-panel{
-    @each $breakpoint in map-keys($grid-breakpoints) {
-      @include media-breakpoint-up($breakpoint) {
-        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-        &-#{$infix} {
-          .card-img-overlay {
-            position: absolute;
-          }
+  &--fixed {
+    position: relative;
+    flex-direction: column;
+    min-height: 400px;
+
+    .card-img {
+      position: absolute;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      &-#{$infix} {
+        .card-img-overlay {
+          position: absolute;
         }
       }
     }
-}
-
-
-
-
-
-//   @each $breakpoint in map-keys($grid-breakpoints) {
-//     $next: breakpoint-next($breakpoint, $grid-breakpoints);
-//     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-//     @if $next {
-//       &.device-#{$next} {
-//         @include media-breakpoint-up($breakpoint) {
-//           @include featured-panel-responsive-settings;
-//         }
-//       }
-//     }
-//   }
-// }
-
-////////////////////////////////////////
-// G. Banner with background
-////////////////////////////////////////
-
-$banner-with-background-height: 350px;
-$banner-with-background-opacity: 0.25;
-
-.banner-with-background {
-  position: relative;
-  overflow: hidden;
-  
-  min-height: $banner-with-background-height;
-
-  >* {
-    position: relative;
-    z-index: auto;
   }
-
-  &::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: auto;
-
-    opacity: $banner-with-background-opacity;
-
-    @include apply-background-image;
-  }
-
-  // Add your own backround classes and append them to the '.banner-with-background' selector
-
-  &.oculus {
-    &::before {
-      @include apply-background-image("oculus");
-    }
-  }
-
-  // Make height smaller on smaller viewports
-
-  @include media-breakpoint-down(md) {
-    min-height: calc(#{$banner-with-background-height} * 0.75);
-  }
-  
 }
 
 ////////////////////////////////////////
 // H. Extensible lists
 ////////////////////////////////////////
 
-// Note: Link lists can be used in place of Bootstrap's .nav when Link padding is unneeded.
-// Link lists are ideal for horizontal navs when supporting 'rtl'
+// Note: Link lists can be used in place of Bootstrap's .nav when link padding is wanted.
+// Extensible lists are ideal for horizontal navs when supporting 'rtl'
 
 $extensible-list-margin: 0.5rem;
-
-@mixin extensible-list-stack {
-  margin-bottom: $extensible-list-margin;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
 
 @mixin responsive-extensible-list-settings {
   // Remove flex properties
@@ -690,12 +610,12 @@ $extensible-list-margin: 0.5rem;
 .extensible-list {
   @include list-unstyled;
 
-  margin-bottom: 0;
+  margin-bottom: unset;
 
   // fixed padding added by user agent stylesheet after translation
-  -webkit-padding-start: 0;
+  -webkit-padding-start: unset;
 
-  li ul {
+  > li > ul {
     margin-top: $extensible-list-margin;
 
     // Indent nested lists by default
@@ -706,34 +626,47 @@ $extensible-list-margin: 0.5rem;
 
   li {
     @include extensible-list-stack;
+    margin-bottom: $extensible-list-margin;
+
+    &:not(:last-child){
+      margin-bottom: unset;
+    }
   }
 
   &.horizontal {
     display: flex;
     flex-direction: row;
     align-items: center;
+
     margin-left: -$extensible-list-margin;
     margin-right: -$extensible-list-margin;
 
     li {
-      margin-bottom: 0;
+      margin-bottom: unset;
       margin-left: $extensible-list-margin;
       margin-right: $extensible-list-margin;
     }
 
-    @each $breakpoint in map-keys($grid-breakpoints) {
-      $next: breakpoint-next($breakpoint, $grid-breakpoints);
-      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-      @if $next {
-        &.device-#{$next} {
-          @include media-breakpoint-down($breakpoint) {
-            @include responsive-extensible-list-settings;
-          }
-        }
-      }
-    }
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  
   }
+}
+
+    // @each $breakpoint in map-keys($grid-breakpoints) {
+    //   $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    //   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    //   @if $next {
+    //     &.device-#{$next} {
+    //       @include media-breakpoint-down($breakpoint) {
+    //         @include responsive-extensible-list-settings;
+    //       }
+    //     }
+    //   }
+    // }
+  // }
 }
 
 ////////////////////////////////////////

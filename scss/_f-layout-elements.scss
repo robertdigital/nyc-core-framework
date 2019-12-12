@@ -571,7 +571,7 @@ legend,
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
       &-#{$infix} {
-        .card-img-overlay {
+        .card-img-overlay:not([class*="--fixed"]) {
           position: absolute;
         }
       }
@@ -588,28 +588,9 @@ legend,
 
 $extensible-list-margin: 0.5rem;
 
-@mixin responsive-extensible-list-settings {
-  // Remove flex properties
-  display: block !important;
-
-  // Remove side margin and padding
-  margin-right: 0;
-  margin-left: 0;
-  padding-right: 0;
-  padding-left: 0;
-
-  li {
-    @include extensible-list-stack;
-
-    display: block !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-}
-
 .extensible-list {
   @include list-unstyled;
-
+ 
   margin-bottom: unset;
 
   // fixed padding added by user agent stylesheet after translation
@@ -624,49 +605,39 @@ $extensible-list-margin: 0.5rem;
     padding-right: $nav-link-padding-x !important;
   }
 
-  li {
-    @include extensible-list-stack;
-    margin-bottom: $extensible-list-margin;
+  li{
+    // @include extensible-list-stack;
 
     &:not(:last-child){
-      margin-bottom: unset;
+      margin-bottom: $extensible-list-margin;
     }
+
   }
 
-  &.horizontal {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 
-    margin-left: -$extensible-list-margin;
-    margin-right: -$extensible-list-margin;
 
-    li {
-      margin-bottom: unset;
-      margin-left: $extensible-list-margin;
-      margin-right: $extensible-list-margin;
-    }
+ 
+}
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-  
+
+      .horizontal#{$infix} {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        margin-left: -$extensible-list-margin;
+        margin-right: -$extensible-list-margin;
+
+        li {
+          margin-bottom: unset !important;
+          margin-left: $extensible-list-margin;
+          margin-right: $extensible-list-margin;
+        }
+      }
   }
-}
-
-    // @each $breakpoint in map-keys($grid-breakpoints) {
-    //   $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    //   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    //   @if $next {
-    //     &.device-#{$next} {
-    //       @include media-breakpoint-down($breakpoint) {
-    //         @include responsive-extensible-list-settings;
-    //       }
-    //     }
-    //   }
-    // }
-  // }
 }
 
 ////////////////////////////////////////

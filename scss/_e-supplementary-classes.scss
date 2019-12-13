@@ -93,56 +93,32 @@ $sides: "", -top, -right, -bottom, -left;
 // D. Opacities
 ////////////////////////////////////////
 
-// Object opacity
+$opacities: (
+    10: 0.10,
+    20: 0.20,
+    30: 0.30,
+    40: 0.40,
+    50: 0.50,
+    60: 0.60,
+    70: 0.70,
+    80: 0.80,
+    90: 0.90
+);
 
-.opacity-10 {
-    opacity: 0.10;
-}
+//////////////////////////////////////////////
+// B. Opacity Classes
+//////////////////////////////////////////////
 
-.opacity-20 {
-    opacity: 0.20;
-}
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-.opacity-30 {
-    opacity: 0.30;
-}
-
-.opacity-40 {
-    opacity: 0.40;
-}
-
-.opacity-50 {
-    opacity: 0.50;
-}
-
-.opacity-60 {
-    opacity: 0.60;
-}
-
-.opacity-70 {
-    opacity: 0.70;
-}
-
-.opacity-80 {
-    opacity: 0.80;
-}
-
-.opacity-90 {
-    opacity: 0.90;
-}
-
-// Background color opacity
-
-.bg-opacity-black-25 {
-    background-color: rgba($black, 0.25);
-}
-
-.bg-opacity-black-50 {
-    background-color: rgba($black, 0.5);
-}
-
-.bg-opacity-black-75 {
-    background-color: rgba($black, 0.75);
+        @each $name, $value in $opacities {
+            .opacity-#{$name}-#{$infix}{
+                opacity: $value;
+            }
+        }
+    }
 }
 
 ////////////////////////////////////////

@@ -200,7 +200,7 @@ $global-header-toggle-button-color: $primary-nav-link-color;
           text-decoration: none;
           color: $body-color;
 
-          ~button {
+          ~ button {
             color: $body-color;
           }
         }
@@ -364,7 +364,7 @@ $global-header-toggle-button-color: $primary-nav-link-color;
 // Apply custom valdation for accessibility
 // The following works only when custom './js/validation.js' is present in the footer of the form's page
 
-.form-row>.col {
+.form-row > .col {
   &.validate-parent {
     margin-top: auto;
   }
@@ -583,7 +583,7 @@ legend,
 // H. Extensible lists
 ////////////////////////////////////////
 
-// Note: Link lists can be used in place of Bootstrap's .nav when link padding is wanted.
+// Note: Link lists can be used in place of Bootstrap's '.nav' selectors when link padding is not wanted.
 // Extensible lists are ideal for horizontal navs when supporting 'rtl'
 
 $extensible-list-margin: 0.5rem;
@@ -606,17 +606,11 @@ $extensible-list-margin: 0.5rem;
   }
 
   li{
-    // @include extensible-list-stack;
-
     &:not(:last-child){
       margin-bottom: $extensible-list-margin;
     }
 
   }
-
-
-
- 
 }
 
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -626,6 +620,7 @@ $extensible-list-margin: 0.5rem;
       .horizontal#{$infix} {
         display: flex;
         flex-direction: row;
+        align-items: center;
 
         margin-left: -$extensible-list-margin;
         margin-right: -$extensible-list-margin;

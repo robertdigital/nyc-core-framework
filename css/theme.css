@@ -11590,10 +11590,6 @@ In this file:
 // L. Tables
 
 */
-#nyc-head [class^="row"] {
-  min-height: 2.75rem;
-}
-
 #global-header {
   background-color: white;
 }

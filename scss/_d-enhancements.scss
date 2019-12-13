@@ -387,8 +387,8 @@ label,
 #google_translate_element {
   text-align: center;
 
-  select {
-    @extend .custom-select-lg;
+  .goog-te-combo {
+    @extend .custom-select;
     margin-bottom: $spacer-1;
   }
 

@@ -799,7 +799,7 @@ $accordion-margin-y: $spacer-1;
 // K. Cards
 ////////////////////////////////////////
 
-$default-card-borders: true;
+$default-card-borders: false;
 $default-card-backgrounds: false;
 
 @if $default-card-borders == false {

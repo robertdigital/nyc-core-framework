@@ -539,7 +539,7 @@ legend,
       padding: unset;
   }
   
-  &:not([class*="--fixed"]){
+  &:not([class*="-fixed"]){
     .card-img-overlay {
       position: relative;
     }
@@ -553,7 +553,7 @@ legend,
 
 .featured-panel{
 
-  &--fixed {
+  &-fixed {
     position: relative;
     flex-direction: column;
     min-height: 400px;
@@ -570,7 +570,7 @@ legend,
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
       &-#{$infix} {
-        .card-img-overlay:not([class*="--fixed"]) {
+        .card-img-overlay:not([class*="-fixed"]) {
           position: absolute;
         }
       }

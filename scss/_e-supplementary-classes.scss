@@ -114,7 +114,7 @@ $opacities: (
         $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
         @each $name, $value in $opacities {
-            .opacity-#{$name}-#{$infix}{
+            .opacity#{$infix}-#{$name}{
                 opacity: $value;
             }
         }

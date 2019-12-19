@@ -65,9 +65,9 @@ $cyan: #008299;
 // Set your theme's color palette here
 
 $primary: #181A7B;
-$secondary: #3B6CF6;
-$info: #A513B6;
-$dark: #0A1438;
+$secondary: #005f5d;
+$info: #5139bb;
+$dark: #001731;
 $light: #e6ecf7;
 
 // Add white and black to our theme's color map
@@ -84,7 +84,7 @@ $theme-colors: (
 // Default Bootstrap grayscale are all over the map, so
 // here we attempt to simplify the grays used on various Bootstrap elements
 
-$body-color: $gray-900;
+$body-color: $gray-800;
 $border-color: $gray-300;
 $text-muted: $gray-700;
 

@@ -569,7 +569,7 @@ legend,
     @include media-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-      &-#{$infix} {
+      &#{$infix} {
         .card-img-overlay:not([class*="-fixed"]) {
           position: absolute;
         }

@@ -481,43 +481,43 @@ legend,
   }
 }
 
-////////////////////////////////////////
-// E. Gradients
-////////////////////////////////////////
+// ////////////////////////////////////////
+// // E. Gradients
+// ////////////////////////////////////////
 
-// Gradients call a custom mixin in '_c-custom-mixins.scss'
+// // Gradients call a custom mixin in '_c-custom-mixins.scss'
 
-[class*="overlay-gradient-"] {
-  position: relative;
-  overflow: hidden;
+// [class*="overlay-gradient-"] {
+//   position: relative;
+//   overflow: hidden;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    right: -1px;
-    bottom: -1px;
-  }
-}
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     top: -1px;
+//     left: -1px;
+//     right: -1px;
+//     bottom: -1px;
+//   }
+// }
 
-// Gradient Overlays
+// // Gradient Overlays
 
-.overlay-gradient-y-black::before {
-  @include linear-gradient;
-}
+// .overlay-gradient-y-black::before {
+//   @include linear-gradient;
+// }
 
-.overlay-gradient-x-white::before {
-  @include linear-gradient($direction: to left, $first-color: white, $second-color: white, $first-color-opacity: 0, $second-color-opacity: 1, $first-color-position: 0%, $second-color-position: 100%);
-}
+// .overlay-gradient-x-white::before {
+//   @include linear-gradient($direction: to left, $first-color: white, $second-color: white, $first-color-opacity: 0, $second-color-opacity: 1, $first-color-position: 0%, $second-color-position: 100%);
+// }
 
-.overlay-gradient-x-primary::before {
-  @include linear-gradient($direction: to left, $first-color: $primary, $second-color: $primary, $first-color-opacity: 0, $second-color-opacity: 0.8, $first-color-position: 0, $second-color-position: 100%);
-}
+// .overlay-gradient-x-primary::before {
+//   @include linear-gradient($direction: to left, $first-color: $primary, $second-color: $primary, $first-color-opacity: 0, $second-color-opacity: 0.8, $first-color-position: 0, $second-color-position: 100%);
+// }
 
-.overlay-gradient-x-info::before {
-  @include linear-gradient($direction: to right, $first-color: theme-color("info"), $second-color: theme-color("info"), $first-color-opacity: 0, $second-color-opacity: 0.75, $first-color-position: 0, $second-color-position: 100%);
-}
+// .overlay-gradient-x-info::before {
+//   @include linear-gradient($direction: to right, $first-color: theme-color("info"), $second-color: theme-color("info"), $first-color-opacity: 0, $second-color-opacity: 0.75, $first-color-position: 0, $second-color-position: 100%);
+// }
 
 ////////////////////////////////////////
 // F. Featured panels
@@ -556,6 +556,12 @@ legend,
       height: 100%;
       object-fit: cover;
     }
+
+    @include media-breakpoint-down(md) {
+      min-height: 300px;
+    }
+
+
   }
 
   @each $breakpoint in map-keys($grid-breakpoints) {

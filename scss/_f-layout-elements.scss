@@ -524,11 +524,12 @@ legend,
 ////////////////////////////////////////
 
 [class*="featured-panel"] {
-  border: unset;
+  border: none;
 
   .card-img-overlay {
       display: flex;
-      padding: unset;
+      flex-direction: column;
+      padding: 0;
   }
   
   &:not([class*="-fixed"]){

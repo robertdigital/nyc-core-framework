@@ -143,7 +143,6 @@ $global-header-toggle-button-color: $primary-nav-link-color;
     border: none;
     padding: $nav-link-padding-y $nav-link-padding-x;
     
-
     @if $global-header-dark {
       background-color: $global-header-bg-color;
     }
@@ -462,7 +461,6 @@ legend,
 
     .file-name {
       @extend .font-weight-normal;
-
       @extend .text-truncate;
 
       padding: $spacer-1;
@@ -472,7 +470,6 @@ legend,
   }
 
   @include media-breakpoint-down(md) {
-
     .file-choose,
     .file-name {
       display: block !important;
